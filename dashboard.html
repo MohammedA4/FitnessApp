@@ -1,0 +1,762 @@
+    <!DOCTYPE html>
+    <!--This line tells the browser this is an HTML5 document-->
+    <html lang="en">
+
+    <head>
+        <!--The head section contains settings - nothing here is visible on the page-->
+        <title>FitAI - My Plan</title>
+        <!--Sets the text shown on the browser tab-->
+        <meta charset="UTF-8">
+        <!--Makes sure all characters display correctly-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Makes the page display correctly on mobile phones and tablets-->
+        <link rel="stylesheet" href="style.css">
+        <!--Links the CSS file that controls how the page looks-->
+    </head>
+
+    <body>
+        <!--Everything inside the body tag is visible on the page-->
+
+        <header>
+            <!--The header shows the site name and navigation links-->
+            <h1><a href="index.html" class="header-title-link"><img src="fitai_logo_white.svg" alt="FitAI" class="header-logo"></a></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <!--Link back to the profile form-->
+                    <li><a href="setup.html">My Plan</a></li>
+                    <!--Link to this page-->
+                    <li><a href="contact.html">Contact</a></li>
+                    <li>
+                        <div class="accessibility-wrapper">
+                            <button class="accessibility-btn" onclick="toggleAccessibilityPanel()" title="Accessibility Options">Aa</button>
+                            <div class="accessibility-panel" id="accessibilityPanel" style="display:none;">
+                                <p class="acc-panel-title">Accessibility</p>
+                                <button id="acc_darkBtn"     class="acc-option" onclick="toggleDarkMode()">Dark Mode</button>
+                                <button id="acc_largeBtn"    class="acc-option" onclick="toggleLargeText()">Larger Text</button>
+                                <button id="acc_contrastBtn" class="acc-option" onclick="toggleHighContrast()">High Contrast</button>
+                            </div>
+                        </div>
+                    </li>
+                    <!--Link to the feedback page-->
+                </ul>
+            </nav>
+        </header>
+        <!--End of the header-->
+
+        <main>
+            <!--The main tag holds the main content of this page-->
+
+            <h2>Your Personalised Plan</h2>
+            <!--The heading for this page-->
+
+            <p class="welcome" id="welcomeMessage"></p>
+            <!--This paragraph will be filled in by JavaScript with the user's name-->
+
+            <div class="message-banner" id="motivationalBanner">
+                <!--This is the large coloured message banner - colour changes based on difficulty level-->
+                <!--JavaScript adds a class like "message-banner-3" to set the correct colour-->
+                <p id="motivationalMessage"></p>
+                <!--The motivational message text is inserted here by JavaScript-->
+            </div>
+            <!--End of the message banner-->
+
+            <div class="card">
+                <!--This card shows the AI difficulty level-->
+
+                <p>
+                    AI Difficulty Level:
+                    <span class="difficulty-badge" id="difficultyBadge"></span>
+                    <!--The badge text and colour will be set by JavaScript-->
+                </p>
+
+                <p style="margin-top: 0.5em; color: #555; font-size: 0.9em;">
+                    This level is automatically adjusted by the AI based on your workout feedback.
+                </p>
+                <!--Explains to the user why the level changes-->
+
+                <div class="athlete-badge" id="athleteBadge" style="display: none;">
+                    <!--This gold badge is hidden by default-->
+                    <!--JavaScript will show it only when the user reaches level 5-->
+                    You have reached ELITE level! You are a true athlete - maximum difficulty unlocked!
+                </div>
+
+            </div>
+            <!--End of the difficulty and motivation card-->
+
+            <div class="card">
+                <!--This card shows today's workout exercises-->
+                <h3>Today's Workout</h3>
+                <ul id="workoutList">
+                    <!--The exercises will be added here by JavaScript-->
+                </ul>
+            </div>
+            <!--End of the workout card-->
+
+            <div class="card">
+                <!--This card shows today's meal plan-->
+                <h3>Today's Meal Plan</h3>
+
+                <ul id="mealList">
+                    <!--The meals (breakfast, lunch, dinner) will be added here by JavaScript-->
+                </ul>
+
+                <button class="btn-nutrition" onclick="toggleNutrition()">
+                    View Nutrition Info
+                </button>
+                <!--This button shows or hides the nutrition information below-->
+                <!--onclick="toggleNutrition()" means it calls the toggleNutrition function when clicked-->
+
+                <div class="nutrition-panel" id="nutritionPanel">
+                    <!--This panel is hidden by default - toggleNutrition() makes it visible-->
+
+                    <h4>Approximate Daily Nutrition</h4>
+                    <!--Heading for the nutrition section-->
+
+                    <div class="nutrition-grid">
+                        <!--The four nutrition boxes sit side by side inside this grid-->
+
+                        <div class="nutrition-item">
+                            <!--Box showing calories-->
+                            <span class="nutrition-value" id="nutCalories"></span>
+                            <!--Value filled in by JavaScript-->
+                            <span class="nutrition-label">Calories</span>
+                        </div>
+
+                        <div class="nutrition-item">
+                            <!--Box showing protein-->
+                            <span class="nutrition-value" id="nutProtein"></span>
+                            <span class="nutrition-label">Protein</span>
+                        </div>
+
+                        <div class="nutrition-item">
+                            <!--Box showing carbohydrates-->
+                            <span class="nutrition-value" id="nutCarbs"></span>
+                            <span class="nutrition-label">Carbohydrates</span>
+                        </div>
+
+                        <div class="nutrition-item">
+                            <!--Box showing fat-->
+                            <span class="nutrition-value" id="nutFat"></span>
+                            <span class="nutrition-label">Fat</span>
+                        </div>
+
+                    </div>
+                    <!--End of the nutrition grid-->
+
+                    <p style="font-size: 0.83em; color: #888; margin-top: 0.8em; text-align: center;">
+                        These are approximate values and may vary based on portion sizes and cooking methods.
+                    </p>
+                    <!--Small disclaimer about the nutrition estimates-->
+
+                </div>
+                <!--End of the nutrition panel-->
+
+                <div class="nutrition-extra" id="nutritionExtra" style="display:none;">
+                    <div class="nutrition-extra-item" id="waterItem" style="display:none;">
+                        <span class="nutrition-extra-value" id="nutWater">—</span>
+                        <span class="nutrition-extra-label">Daily Water Target</span>
+                    </div>
+                    <div class="nutrition-extra-item" id="bmiItem" style="display:none;">
+                        <span class="nutrition-extra-value" id="nutBMI">—</span>
+                        <span class="nutrition-extra-label">Your BMI</span>
+                    </div>
+                </div>
+                <!--Water target and BMI are always visible, no button needed-->
+
+                <p style="font-size:0.82em; color:#888; margin-top:0.8em;">
+                    Weight or height changed?
+                    <a href="setup.html" style="color:#2e978e;">Update your details</a>
+                    — your targets will recalculate automatically.
+                </p>
+
+            </div>
+            <!--End of the meal card-->
+
+            <div class="card">
+                <!--This card shows the user's current streak and a rest day notice if needed-->
+                <h3>Your Streak</h3>
+
+                <div class="streak-display">
+                    <span class="streak-number" id="streakNumber">0</span>
+                    <span class="streak-label" id="streakLabel">sessions completed</span>
+                </div>
+                <!--The number and label are filled in by JavaScript below-->
+
+                <div id="streakStatus" style="margin-top:1em;"></div>
+                <!--Streak safe / countdown indicator — filled in by JavaScript-->
+
+                <div class="rest-day-notice" id="restDayNotice" style="display: none;">
+                    <!--This notice is hidden by default - shown if streak reaches 3 or more-->
+                    <strong>Recovery Reminder</strong>
+                    You have completed <span id="restDayStreakCount"></span> days in a row.
+                    Rest is just as important as training. Your muscles grow and repair during recovery.
+                    Consider a light stretching or walking session if your body needs it.
+                </div>
+
+            </div>
+            <!--End of streak card-->
+
+            <div class="card">
+                <!--This card shows the last 7 difficulty levels as a visual bar chart-->
+                <h3>Your Progress (Last 7 Sessions)</h3>
+
+                <div class="history-bars" id="historyBars">
+                    <!--The bars will be built here by JavaScript-->
+                    <!--If no history exists yet, a message is shown instead-->
+                </div>
+
+                <p style="text-align: center; color: #888; font-size: 0.83em; margin-top: 0.5em;">
+                    Each bar shows your difficulty level for that session. Watch yourself improve over time!
+                </p>
+
+            </div>
+            <!--End of progress history card-->
+
+            <div class="card">
+                <!--Activity calendar showing trained / rest / missed days-->
+                <h3>Activity Calendar</h3>
+                <p style="color:#555; font-size:0.92em; margin-bottom:0.3em;">
+                    Your training activity over the last 4 weeks.
+                </p>
+                <div class="calendar-grid" id="calendarGrid"></div>
+                <div class="calendar-legend">
+                    <div class="legend-item"><div class="legend-dot cal-trained"></div> Trained</div>
+                    <div class="legend-item"><div class="legend-dot cal-rest"></div> Rest Day</div>
+                    <div class="legend-item"><div class="legend-dot cal-missed"></div> Missed</div>
+                    <div class="legend-item"><div class="legend-dot cal-inactive"></div> Before you started</div>
+                </div>
+            </div>
+            <!--End of activity calendar card-->
+
+
+            <div class="card">
+                <!--This card shows all-time personal records-->
+                <h3>Personal Records</h3>
+                <div class="records-grid">
+                    <div class="record-item">
+                        <span class="record-value" id="recSessions">0</span>
+                        <span class="record-label">Total Sessions</span>
+                    </div>
+                    <div class="record-item">
+                        <span class="record-value" id="recBestDiff">—</span>
+                        <span class="record-label">Best Streak</span>
+                    </div>
+                    <div class="record-item">
+                        <span class="record-value" id="recBadges">0</span>
+                        <span class="record-label">Badges Earned</span>
+                    </div>
+                </div>
+            </div>
+            <!--End of personal records card-->
+
+            <div class="card">
+                <!--This card shows all available badges and which ones have been earned-->
+                <h3>Your Badges</h3>
+                <p style="color: #555; font-size: 0.92em; margin-bottom: 0.5em;">
+                    Earn badges by completing workouts and increasing your difficulty level.
+                </p>
+
+                <div class="badges-grid" id="badgesGrid">
+                    <!--Badge tiles are built here by JavaScript-->
+                </div>
+
+            </div>
+            <!--End of badges card-->
+
+            <div class="card" id="secondSessionWarning" style="display:none; border-left:4px solid #e67e22; margin-top:1em;">
+                <h3 style="color:#e67e22; margin-bottom:0.6em;">You've Already Trained Today</h3>
+                <p style="color:#555; margin-bottom:1.2em;">
+                    You have already completed a session today. Rest and recovery are just as important as training.
+                    Your muscles grow and repair while you rest, and doing too much too soon can increase your risk of injury.
+                    It is generally recommended to stick to one session per day.
+                    Are you sure you want to log another session?
+                </p>
+                <div style="display:flex; gap:1em; flex-wrap:wrap;">
+                    <a href="feedback.html" class="btn" style="background:#e67e22; border-color:#e67e22;">Yes, Log Another Session</a>
+                    <button onclick="document.getElementById('secondSessionWarning').style.display='none'; document.getElementById('workoutBtn').style.display='block';"
+                            style="padding:0.75em 1.5em; background:#888; color:#fff; border:none; border-radius:6px; font-size:1em; cursor:pointer;">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+
+            <div id="restDayBanner" class="rest-day-today-notice" style="display:none;">
+                <strong>Today is your scheduled rest day.</strong>
+                Your streak is protected — enjoy the recovery! You can still log a session below if you decide to train.
+            </div>
+
+            <button class="btn" id="workoutBtn" onclick="checkBeforeWorkout()">I've Completed Today's Workout</button>
+
+            <div class="rest-day-section">
+                <button class="btn-rest" id="restDayBtn" onclick="toggleRestDayTomorrow()">
+                    Schedule a Rest Day Tomorrow
+                </button>
+                <p id="restDayMsg" style="display:none; margin-top:0.5em; font-size:0.85em; color:#2471a3;">
+                    Tomorrow is marked as a rest day — your streak will be safe.
+                    <button onclick="toggleRestDayTomorrow()" style="background:none; border:none; color:#e74c3c; cursor:pointer; font-size:1em; text-decoration:underline; padding:0;">Undo</button>
+                </p>
+            </div>
+
+            <div class="reset-section">
+                <button class="btn-reset" onclick="showResetConfirm()">Reset My Profile</button>
+            </div>
+
+            <div class="card reset-confirm-card" id="resetConfirmCard" style="display:none;">
+                <h3 style="color:#c0392b; margin-bottom:0.6em;">Are you sure?</h3>
+                <p style="color:#555; margin-bottom:1.2em;">
+                    This will permanently delete all your data including your profile, workout history, streak, and badges.
+                    This cannot be undone.
+                </p>
+                <div style="display:flex; gap:1em; flex-wrap:wrap;">
+                    <button onclick="confirmReset()"
+                            style="padding:0.75em 1.5em; background:#c0392b; color:#fff; border:none; border-radius:6px; font-size:1em; cursor:pointer; font-weight:600;">
+                        Yes, Delete Everything
+                    </button>
+                    <button onclick="document.getElementById('resetConfirmCard').style.display='none';"
+                            style="padding:0.75em 1.5em; background:#888; color:#fff; border:none; border-radius:6px; font-size:1em; cursor:pointer;">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+
+        </main>
+        <!--End of the main section-->
+
+        <footer>
+            <!--The footer appears at the bottom of every page-->
+            <p>FitAI - Personalised Fitness and Nutrition System | CN6000 Project 2025 - 26</p>
+        </footer>
+        <!--End of the footer-->
+
+        <script src="app.js"></script>
+        <!--Loads the app.js file which contains all the AI functions and data-->
+
+        <script>
+            // This script runs on the dashboard page to display the user's personalised plan
+
+            // Load the user's saved profile from the browser's memory
+            var profile = loadProfile();
+
+            // If no profile is found, the user has not filled in the form yet
+            // Send them back to the form so they can fill in their details
+            if (profile === null) {
+                window.location.href = "setup.html";
+            }
+
+            // Get the current AI difficulty level
+            var difficulty = getDifficulty();
+
+            // Get the meal data for today (includes breakfast, lunch, dinner, and nutrition)
+            // profile.cuisine is passed so the AI can return culturally relevant meals
+            var meals = getMeal(profile.diet, profile.goal, profile.cuisine);
+
+            // Show the welcome message using the user's name
+            document.getElementById("welcomeMessage").textContent =
+                "Welcome, " + profile.name + "! Here is your personalised plan for today.";
+
+            // Show the motivational message for the current difficulty level
+            document.getElementById("motivationalMessage").textContent =
+                getMotivationalMessage(difficulty);
+
+            // Apply the correct colour class to the banner based on difficulty level
+            // e.g. difficulty 3 adds class "message-banner-3" which makes it green
+            document.getElementById("motivationalBanner").classList.add("message-banner-" + difficulty);
+
+            // Show the difficulty level in the badge
+            var badge = document.getElementById("difficultyBadge");
+            badge.textContent = difficulty + " / 5";
+
+            // If the user is at level 5, change the badge colour to gold and show the athlete message
+            if (difficulty === 5) {
+                badge.classList.add("difficulty-badge-elite");
+                // classList.add adds an extra CSS class to change the colour to gold
+                document.getElementById("athleteBadge").style.display = "block";
+                // style.display = "block" makes the hidden athlete badge visible
+            }
+
+            // Get the list of exercises for this user's goal and current difficulty level
+            var exercises = getWorkout(profile.goal, difficulty);
+
+            // Find the workout list element on the page
+            var workoutList = document.getElementById("workoutList");
+
+            // Loop through each exercise and add it to the list on the page
+            for (var i = 0; i < exercises.length; i++) {
+                var listItem = document.createElement("li");
+                // document.createElement creates a new HTML element
+                listItem.textContent = exercises[i];
+                // Set the text of the list item to the exercise name
+                workoutList.appendChild(listItem);
+                // appendChild adds the new item to the end of the list
+            }
+
+            // Find the meal list element on the page
+            var mealList = document.getElementById("mealList");
+
+            // Create and add a list item for breakfast
+            var breakfastItem = document.createElement("li");
+            breakfastItem.textContent = "Breakfast: " + meals.breakfast;
+            mealList.appendChild(breakfastItem);
+
+            // Create and add a list item for lunch
+            var lunchItem = document.createElement("li");
+            lunchItem.textContent = "Lunch: " + meals.lunch;
+            mealList.appendChild(lunchItem);
+
+            // Create and add a list item for dinner
+            var dinnerItem = document.createElement("li");
+            dinnerItem.textContent = "Dinner: " + meals.dinner;
+            mealList.appendChild(dinnerItem);
+
+            // Use personalised targets if the user provided their weight, otherwise fall back to meal defaults
+            var nutrition = meals.nutrition;
+            if (profile.weight) {
+                var personalised = getWeightTargets(profile.weight, profile.goal);
+                if (personalised !== null) { nutrition = personalised; }
+            }
+
+            document.getElementById("nutCalories").textContent = nutrition.calories;
+            document.getElementById("nutProtein").textContent  = nutrition.protein;
+            document.getElementById("nutCarbs").textContent    = nutrition.carbs;
+            document.getElementById("nutFat").textContent      = nutrition.fat;
+
+            // This function shows or hides the nutrition panel when the button is clicked
+            function toggleNutrition() {
+                var panel = document.getElementById("nutritionPanel");
+                // Find the nutrition panel on the page
+
+                if (panel.style.display === "none" || panel.style.display === "") {
+                    // If the panel is currently hidden, show it
+                    panel.style.display = "block";
+                } else {
+                    // If the panel is currently visible, hide it
+                    panel.style.display = "none";
+                }
+            }
+
+            // ===== STREAK DISPLAY =====
+
+            // Get the user's current streak count from localStorage
+            var streak = getStreak();
+
+            // Show the streak number in the large teal number on the page
+            document.getElementById("streakNumber").textContent = streak;
+
+            // Change the label text depending on whether the streak is 1 session or more
+            if (streak === 1) {
+                document.getElementById("streakLabel").textContent = "session completed";
+            } else {
+                document.getElementById("streakLabel").textContent = "sessions completed";
+            }
+
+            // If the streak is 3 or more, show the rest day advisory box
+            if (shouldSuggestRestDay()) {
+                document.getElementById("restDayStreakCount").textContent = streak;
+                // Fill in the streak number inside the advisory message
+                document.getElementById("restDayNotice").style.display = "block";
+                // Make the yellow advisory box visible
+            }
+
+            // ===== STREAK COUNTDOWN =====
+
+            function getMsUntilMidnight() {
+                var now      = new Date();
+                var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+                return midnight.getTime() - now.getTime();
+            }
+
+            function formatCountdown(ms) {
+                var totalSeconds = Math.floor(ms / 1000);
+                var hours        = Math.floor(totalSeconds / 3600);
+                var minutes      = Math.floor((totalSeconds % 3600) / 60);
+                if (hours > 0) {
+                    return hours + "h " + minutes + "m";
+                }
+                return minutes + "m";
+            }
+
+            function renderStreakStatus() {
+                var statusEl  = document.getElementById("streakStatus");
+                if (!statusEl) { return; }
+
+                var todayNum     = getTodayDayNumber();
+                var restDays     = getRestDays();
+                var tomorrowRest = restDays.indexOf(todayNum + 1) !== -1;
+
+                // No streak yet — nothing to show
+                if (streak === 0) { statusEl.innerHTML = ""; return; }
+
+                // Today is a scheduled rest day — streak is safe
+                if (restDays.indexOf(todayNum) !== -1) {
+                    statusEl.innerHTML =
+                        '<div class="streak-status streak-safe">' +
+                        '<span class="streak-status-dot"></span>' +
+                        'Today is your rest day — streak is safe. Enjoy the recovery!' +
+                        '</div>';
+                    return;
+                }
+
+                // Already trained today — streak is safe
+                if (hasWorkedOutToday()) {
+                    var safeMsg = 'Streak safe — you have already trained today!';
+                    if (tomorrowRest) { safeMsg += ' Rest day scheduled for tomorrow.'; }
+                    statusEl.innerHTML =
+                        '<div class="streak-status streak-safe">' +
+                        '<span class="streak-status-dot"></span>' + safeMsg +
+                        '</div>';
+                    return;
+                }
+
+                // Haven't trained yet — show countdown
+                var ms          = getMsUntilMidnight();
+                var timeLeft    = formatCountdown(ms);
+                var urgentClass = ms < 2 * 60 * 60 * 1000 ? "streak-urgent" : "streak-warning";
+                var extraNote   = tomorrowRest ? ' Rest day scheduled for tomorrow.' : '';
+
+                statusEl.innerHTML =
+                    '<div class="streak-status ' + urgentClass + '">' +
+                    '<span class="streak-status-dot"></span>' +
+                    'Complete a session in the next <strong>' + timeLeft +
+                    '</strong> to keep your ' + streak + '-day streak alive!' + extraNote +
+                    '</div>';
+            }
+
+            renderStreakStatus();
+            // Update the countdown every minute
+            setInterval(renderStreakStatus, 60000);
+
+            // ===== PROGRESS HISTORY BARS =====
+
+            // Get the stored array of the last 7 difficulty levels
+            // Note: named sessionHistory to avoid clashing with the browser's built-in window.history object
+            var sessionHistory = getHistory();
+
+            // Find the container where the bars will be placed
+            var historyBarsContainer = document.getElementById("historyBars");
+
+            if (sessionHistory.length === 0) {
+                // If there is no history yet, show a simple message instead of an empty chart
+                var noDataMsg = document.createElement("p");
+                noDataMsg.style.textAlign = "center";
+                noDataMsg.style.color = "#aaa";
+                noDataMsg.style.fontSize = "0.9em";
+                noDataMsg.style.width = "100%";
+                noDataMsg.textContent = "No sessions recorded yet. Complete your first workout to see your progress!";
+                historyBarsContainer.appendChild(noDataMsg);
+            } else {
+                // Loop through each difficulty level in the history and build a bar for it
+                for (var h = 0; h < sessionHistory.length; h++) {
+                    var level = sessionHistory[h]; // The difficulty level for this session
+
+                    // The bar height is proportional to the level (max height = 100px at level 5)
+                    // Level 1 = 20px, Level 2 = 40px, Level 3 = 60px, Level 4 = 80px, Level 5 = 100px
+                    var barHeight = (level / 5) * 100;
+
+                    // Create a wrapper div that holds the bar and the label underneath
+                    var wrap = document.createElement("div");
+                    wrap.className = "history-bar-wrap";
+
+                    // Create the coloured bar itself
+                    var bar = document.createElement("div");
+                    bar.className = "history-bar";
+                    bar.style.height = barHeight + "px";
+                    // Set the height using inline style so each bar can have a different height
+
+                    // Colour each bar to match the difficulty level - same colours as the message banners
+                    // Level 1 = blue, 2 = teal, 3 = green, 4 = purple, 5 = gold
+                    var barColours = { 1: "#3498db", 2: "#2e978e", 3: "#27ae60", 4: "#8e44ad", 5: "#f6a623" };
+                    bar.style.backgroundColor = barColours[level] || "#2e978e";
+                    // The || "#2e978e" is a fallback colour in case the level is somehow missing
+
+                    // Create the label shown below each bar (S1, S2, S3...)
+                    var label = document.createElement("span");
+                    label.className = "history-bar-label";
+                    label.textContent = "S" + (h + 1);
+                    // h starts at 0, so we add 1 to make labels start at S1
+
+                    // Add the bar and label into the wrapper, then add the wrapper to the page
+                    wrap.appendChild(bar);
+                    wrap.appendChild(label);
+                    historyBarsContainer.appendChild(wrap);
+                }
+            }
+
+            // ===== BADGES DISPLAY =====
+
+            // Get the list of badge IDs the user has already earned
+            var unlockedBadges = getUnlockedBadges();
+
+            // Find the grid container where badge tiles will be placed
+            var badgesGrid = document.getElementById("badgesGrid");
+
+            // Loop through every possible badge and create a tile for each one
+            for (var b = 0; b < allBadges.length; b++) {
+                var badge = allBadges[b]; // The current badge object {id, name, description}
+
+                // Check if this badge has been earned by looking for its ID in the unlocked list
+                var isEarned = unlockedBadges.indexOf(badge.id) !== -1;
+                // indexOf returns -1 if the item is not found in the array
+
+                // Create a span element for the badge tile
+                var tile = document.createElement("span");
+
+                // Add the correct CSS class - earned badges are teal, locked badges are grey
+                if (isEarned) {
+                    tile.className = "badge-tile badge-earned";
+                } else {
+                    tile.className = "badge-tile badge-locked";
+                }
+
+                // Show the badge name and description as tooltip-style text
+                tile.title = badge.description;
+                // The title attribute shows a tooltip when the user hovers over the tile
+
+                // Show the badge name and a lock icon if it has not been earned yet
+                if (isEarned) {
+                    tile.textContent = badge.name;
+                } else {
+                    tile.textContent = badge.name + " (locked)";
+                }
+
+                badgesGrid.appendChild(tile); // Add the tile to the grid on the page
+            }
+
+            // ===== ACTIVITY CALENDAR =====
+
+            (function buildCalendar() {
+                var todayNum     = getTodayDayNumber();
+                var firstDay     = getFirstSessionDay();
+                var workoutDays  = getWorkoutDays();
+                var restDays     = getRestDays();
+                var grid         = document.getElementById("calendarGrid");
+
+                // Day labels — always start the grid on a Monday
+                var dayLabels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+                // Work out which Monday to start on so we always show full weeks
+                // todayNum is days since epoch; epoch (Jan 1 1970) was a Thursday (day index 3)
+                var todayDow  = (todayNum + 3) % 7; // 0=Mon … 6=Sun
+                var gridStart = todayNum - todayDow - 21; // Monday 4 weeks ago
+
+                // Day-of-week header row
+                for (var h = 0; h < 7; h++) {
+                    var lbl = document.createElement("div");
+                    lbl.className   = "calendar-day-label";
+                    lbl.textContent = dayLabels[h];
+                    grid.appendChild(lbl);
+                }
+
+                // 28 day cells
+                for (var i = 0; i < 28; i++) {
+                    var dayNum = gridStart + i;
+                    var cell   = document.createElement("div");
+                    cell.className = "calendar-cell";
+
+                    var dateObj  = new Date(dayNum * 86400000);
+                    var dateStr  = dateObj.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+
+                    if (dayNum > todayNum) {
+                        cell.classList.add("cal-future");
+                        cell.setAttribute("data-label", dateStr);
+                    } else if (dayNum < firstDay) {
+                        cell.classList.add("cal-inactive");
+                        cell.setAttribute("data-label", dateStr);
+                    } else if (workoutDays.indexOf(dayNum) !== -1) {
+                        cell.classList.add("cal-trained");
+                        cell.setAttribute("data-label", dateStr + " — Trained");
+                    } else if (restDays.indexOf(dayNum) !== -1) {
+                        cell.classList.add("cal-rest");
+                        cell.setAttribute("data-label", dateStr + " — Rest Day");
+                    } else {
+                        cell.classList.add("cal-missed");
+                        cell.setAttribute("data-label", dateStr + " — Missed");
+                    }
+
+                    grid.appendChild(cell);
+                }
+            })();
+
+            // ===== REST DAY SCHEDULING =====
+
+            var tomorrowNum = getTodayDayNumber() + 1;
+
+            // If today is a rest day, show the soft banner (button stays visible)
+            if (getRestDays().indexOf(getTodayDayNumber()) !== -1) {
+                document.getElementById("restDayBanner").style.display = "block";
+            }
+
+            function refreshRestDayUI() {
+                var isMarked = getRestDays().indexOf(tomorrowNum) !== -1;
+                document.getElementById("restDayBtn").textContent =
+                    isMarked ? "Tomorrow Marked as Rest Day" : "Schedule a Rest Day Tomorrow";
+                document.getElementById("restDayMsg").style.display = isMarked ? "block" : "none";
+            }
+
+            function toggleRestDayTomorrow() {
+                if (getRestDays().indexOf(tomorrowNum) !== -1) {
+                    unmarkRestDay(tomorrowNum);
+                } else {
+                    markRestDay(tomorrowNum);
+                }
+                refreshRestDayUI();
+                renderStreakStatus();
+            }
+
+            refreshRestDayUI();
+
+            // Called when the user clicks "I've Completed Today's Workout"
+            // If they have already done a session today, show the warning instead of navigating
+            function checkBeforeWorkout() {
+                if (hasWorkedOutToday()) {
+                    document.getElementById("workoutBtn").style.display = "none";
+                    document.getElementById("secondSessionWarning").style.display = "block";
+                    document.getElementById("secondSessionWarning").scrollIntoView({ behavior: "smooth", block: "center" });
+                    return;
+                }
+                window.location.href = "feedback.html";
+            }
+
+            // ===== PERSONAL RECORDS =====
+
+            document.getElementById("recSessions").textContent = getTotalSessions();
+            document.getElementById("recBestDiff").textContent = getBestStreak() + " days";
+            document.getElementById("recBadges").textContent   = getUnlockedBadges().length + " / " + allBadges.length;
+
+            // ===== WATER TARGET AND BMI =====
+
+            var waterTarget = getWaterTarget(profile.weight, profile.activityLevel);
+            if (waterTarget !== null) {
+                document.getElementById("nutWater").textContent = waterTarget;
+                document.getElementById("waterItem").style.display = "block";
+                document.getElementById("nutritionExtra").style.display = "flex";
+            }
+
+            if (profile.height) {
+                var bmiResult = getBMI(profile.weight, profile.height);
+                if (bmiResult !== null) {
+                    var bmiSpan = document.getElementById("nutBMI");
+                    bmiSpan.textContent = bmiResult.value + " — " + bmiResult.category;
+                    bmiSpan.classList.add(bmiResult.cssClass);
+                    document.getElementById("bmiItem").style.display  = "block";
+                    document.getElementById("nutritionExtra").style.display = "flex";
+                }
+            }
+
+            // ===== RESET PROFILE =====
+
+            function showResetConfirm() {
+                var card = document.getElementById("resetConfirmCard");
+                card.style.display = "block";
+                card.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+
+            function confirmReset() {
+                localStorage.clear();
+                window.location.href = "index.html";
+            }
+        </script>
+        <!--End of the page script-->
+
+    </body>
+    </html>

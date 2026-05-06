@@ -1,0 +1,2211 @@
+/* style.css - This file controls how the website looks */
+
+/* This removes default spacing from every element on the page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Makes width/height calculations easier */
+    font-family: Arial, sans-serif; /* Sets the font for the whole site */
+}
+
+/* The body is the entire visible page */
+body {
+    background-color: #f0f4f4; /* Light grey-green background */
+    color: #333333; /* Dark grey text */
+}
+
+/* The header is the top bar showing the site title and navigation */
+header {
+    background-color: #2e978e; /* Teal green colour */
+    color: white;
+    padding: 1em 2em; /* Adds space inside the header */
+    display: flex; /* Puts items side by side */
+    justify-content: space-between; /* Pushes title left, nav right */
+    align-items: center; /* Vertically centres the items */
+}
+
+/* The site title inside the header */
+header h1 {
+    font-size: 1.4em;
+}
+
+/* The link wrapped around the title - keeps it looking like plain white text */
+.header-title-link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.header-title-link:hover {
+    opacity: 0.85;
+    text-decoration: none;
+}
+
+.header-logo {
+    height: 52px;
+    width: auto;
+    display: block;
+}
+
+.hero-logo {
+    width: 300px;
+    max-width: 85%;
+    margin-bottom: 1.2em;
+    display: center;
+}
+
+/* The navigation list inside the header */
+nav ul {
+    list-style: none; /* Removes bullet points from the list */
+    display: flex; /* Shows links side by side */
+    gap: 2em; /* Adds space between each link */
+}
+
+/* Each navigation link */
+nav ul li a {
+    color: white;
+    text-decoration: none; /* Removes the underline from links */
+    font-size: 1em;
+}
+
+/* Navigation links when the mouse hovers over them */
+nav ul li a:hover {
+    background-color: #1d6b64; /* Darker teal on hover */
+    padding: 0.3em 0.6em;
+    border-radius: 5px; /* Rounded corners on the hover box */
+}
+
+/* The main section holds the main content of each page */
+main {
+    max-width: 800px; /* Limits the width so content does not stretch too wide */
+    margin: 2em auto; /* Centers the content horizontally */
+    padding: 0 1em; /* Adds a small gap on the sides */
+}
+
+/* The main page heading on each page */
+h2 {
+    text-align: center;
+    color: #2e978e; /* Teal colour to match the header */
+    margin-bottom: 1em;
+    font-size: 1.8em;
+}
+
+/* A card is a white rounded box used to group content */
+.card {
+    background-color: white;
+    border-radius: 10px; /* Rounded corners */
+    padding: 1.5em; /* Space inside the card */
+    margin-bottom: 1.5em; /* Space below each card */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow to lift the card */
+}
+
+/* The heading inside a card */
+.card h3 {
+    color: #2e978e;
+    margin-bottom: 0.8em;
+    font-size: 1.3em;
+    border-bottom: 2px solid #2e978e; /* A line under the heading */
+    padding-bottom: 0.3em;
+}
+
+/* A list inside a card (used for exercises and meals) */
+.card ul {
+    list-style: none; /* Removes bullet points */
+    padding: 0;
+}
+
+/* Each item in the list */
+.card ul li {
+    padding: 0.6em 0; /* Space above and below each item */
+    border-bottom: 1px solid #e8e8e8; /* Light line between items */
+    font-size: 1em;
+}
+
+/* Removes the line from the very last item in the list */
+.card ul li:last-child {
+    border-bottom: none;
+}
+
+/* Friendly error messages shown below each form field when validation fails */
+.field-error {
+    color: #e74c3c;
+    font-size: 0.88em;
+    margin-top: -0.8em;
+    margin-bottom: 1em;
+}
+
+/* Labels on the form (the text above each input box) */
+label {
+    display: block; /* Puts the label on its own line */
+    margin-bottom: 0.3em;
+    font-weight: bold;
+    color: #444;
+    font-size: 0.95em;
+}
+
+/* Text boxes and dropdown menus on the form */
+input, select {
+    width: 100%; /* Stretches to fill the full width */
+    padding: 0.7em;
+    margin-bottom: 1.2em;
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #fafafa;
+}
+
+/* Highlight the input when the user clicks on it */
+input:focus, select:focus {
+    border-color: #2e978e;
+    outline: none; /* Removes the default browser blue outline */
+}
+
+/* The standard button used across all pages */
+.btn {
+    display: block; /* Takes up its own line */
+    width: 100%;
+    padding: 0.9em;
+    background-color: #2e978e;
+    color: white;
+    border: none; /* Removes the default border */
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer; /* Shows a hand cursor when hovering */
+    text-align: center;
+    text-decoration: none; /* Removes underline when used as a link */
+    margin-top: 0.5em;
+}
+
+/* Button colour change when hovered */
+.btn:hover {
+    background-color: #1d6b64; /* Slightly darker teal */
+}
+
+/* The three feedback buttons sit in a column with space between them */
+.feedback-buttons {
+    display: flex;
+    flex-direction: column; /* Stack the buttons on top of each other */
+    gap: 1em; /* Space between each button */
+}
+
+/* Green button for "Too Easy" */
+.btn-easy {
+    background-color: #27ae60;
+}
+.btn-easy:hover {
+    background-color: #1e8449;
+}
+
+/* Orange button for "Challenging but Manageable" */
+.btn-manageable {
+    background-color: #e67e22;
+}
+.btn-manageable:hover {
+    background-color: #ca6f1e;
+}
+
+/* Red button for "Too Difficult" */
+.btn-hard {
+    background-color: #e74c3c;
+}
+.btn-hard:hover {
+    background-color: #c0392b;
+}
+
+/* ===== FEEDBACK PAGE IMPROVEMENTS ===== */
+
+/* Session context strip */
+.session-strip {
+    display: flex;
+    gap: 1em;
+    margin-bottom: 1.4em;
+    flex-wrap: wrap;
+}
+.session-strip-item {
+    flex: 1;
+    min-width: 100px;
+    background: #f0f8f7;
+    border: 1px solid #c8e6e4;
+    border-radius: 8px;
+    padding: 0.6em 1em;
+    text-align: center;
+}
+.session-strip-value {
+    display: block;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #2e978e;
+}
+.session-strip-label {
+    display: block;
+    font-size: 0.75em;
+    color: #666;
+    margin-top: 0.1em;
+}
+
+/* Sub-label inside each feedback button */
+.btn-sub {
+    display: block;
+    font-size: 0.74em;
+    font-weight: normal;
+    opacity: 0.88;
+    margin-top: 0.28em;
+}
+
+/* Fitness tip card */
+.tip-card {
+    background: #f7fcfb;
+    border-left: 4px solid #2e978e;
+    border-radius: 0 8px 8px 0;
+    padding: 0.9em 1.1em;
+    margin-top: 1.4em;
+    color: #444;
+    font-size: 0.92em;
+}
+.tip-label {
+    font-size: 0.72em;
+    font-weight: 700;
+    color: #2e978e;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3em;
+    display: block;
+}
+
+/* The result message shown after the user submits feedback */
+.result-message {
+    display: none; /* Hidden by default - JavaScript makes it visible */
+    background-color: #e8f8f5; /* Light teal background */
+    border: 1px solid #2e978e;
+    border-radius: 8px;
+    padding: 1em;
+    text-align: center;
+    font-size: 1.05em;
+    margin-top: 1.5em;
+    color: #1d6b64;
+}
+
+/* The difficulty level badge shown on the dashboard */
+.difficulty-badge {
+    display: inline-block;
+    background-color: #2e978e;
+    color: white;
+    padding: 0.3em 0.9em;
+    border-radius: 20px; /* Pill shape */
+    font-size: 0.95em;
+    font-weight: bold;
+}
+
+/* The welcome message shown at the top of the dashboard */
+.welcome {
+    text-align: center;
+    font-size: 1.15em;
+    margin-bottom: 1.5em;
+    color: #555;
+}
+
+/* ===== HERO SECTION ===== */
+
+/* Full-width teal gradient banner on the home page */
+.hero {
+    background: linear-gradient(135deg, #2e978e 0%, #1a5c57 100%);
+    color: white;
+    padding: 4em 2em 3em 2em;
+    text-align: center;
+}
+
+/* The large headline inside the hero */
+.hero-headline {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 0.5em;
+    line-height: 1.3;
+}
+
+/* The subheading paragraph below the headline */
+.hero-sub {
+    font-size: 1.05em;
+    opacity: 0.92;
+    max-width: 580px;
+    margin: 0 auto 1.8em auto;
+    line-height: 1.7;
+}
+
+/* The "Build My Plan" button in the hero - white pill shape */
+.hero-cta {
+    display: inline-block;
+    padding: 0.85em 2.5em;
+    background-color: white;
+    color: #2e978e;
+    font-weight: bold;
+    font-size: 1.05em;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.hero-cta:hover {
+    background-color: #e8f8f5;
+}
+
+/* The row of three feature cards below the headline */
+.hero-features {
+    display: flex;
+    gap: 1.5em;
+    margin-top: 3em;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Each individual feature card */
+.hero-card {
+    background: rgba(255, 255, 255, 0.13);
+    border-radius: 12px;
+    padding: 1.8em 1.4em;
+    flex: 1;
+    min-width: 180px;
+    max-width: 240px;
+    text-align: center;
+}
+
+/* Override the global h3 card style so hero card headings stay white */
+.hero-card h3 {
+    color: white;
+    font-size: 1.05em;
+    margin: 0.6em 0 0.4em 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.hero-card p {
+    font-size: 0.88em;
+    opacity: 0.85;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Circular icon shown above each feature card heading */
+.hero-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: white;
+    font-size: 1.3em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.6em auto;
+}
+
+/* ===== LANDING PAGE SECTIONS ===== */
+
+/* Shared wrapper for each section on the landing page */
+.landing-section {
+    padding: 3em 0 2em 0;
+    text-align: center;
+}
+
+/* Alternate section gets a very light background to break up the page visually */
+.landing-section-alt {
+    background-color: #f7fbfb;
+    border-radius: 12px;
+    padding: 2.5em 1.5em;
+    margin-bottom: 1.5em;
+}
+
+/* Section headings on the landing page */
+.section-heading {
+    font-size: 1.7em;
+    color: #2e978e;
+    margin-bottom: 0.3em;
+}
+
+/* Subheading below each section heading */
+.section-sub {
+    color: #777;
+    font-size: 1em;
+    margin-bottom: 2em;
+}
+
+/* Three-column grid for the features */
+.features-grid {
+    display: flex;
+    gap: 1.5em;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Each feature card on the landing page */
+.feature-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2em 1.5em;
+    flex: 1;
+    min-width: 200px;
+    max-width: 240px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.feature-card h3 {
+    color: #2e978e;
+    font-size: 1.05em;
+    margin: 0.7em 0 0.4em 0;
+}
+
+.feature-card p {
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Circular icon at the top of each feature card */
+.feature-icon-circle {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background-color: #2e978e;
+    color: white;
+    font-size: 1.3em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5em auto;
+}
+
+/* How it works - three steps in a row with connectors between them */
+.steps-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+}
+
+/* Each numbered step card */
+.step-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.8em 1.4em;
+    flex: 1;
+    min-width: 180px;
+    max-width: 220px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+    text-align: center;
+}
+
+.step-card h3 {
+    color: #2e978e;
+    font-size: 1em;
+    margin: 0.6em 0 0.4em 0;
+}
+
+.step-card p {
+    font-size: 0.88em;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Large step number circle */
+.step-number {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2e978e, #1d6b64);
+    color: white;
+    font-size: 1.3em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5em auto;
+}
+
+/* Arrow connector between steps - hidden on mobile */
+.step-connector {
+    width: 40px;
+    height: 2px;
+    background-color: #2e978e;
+    opacity: 0.4;
+    flex-shrink: 0;
+}
+
+/* Stats row - four numbers in a horizontal band */
+.stats-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1em;
+    background: linear-gradient(135deg, #2e978e, #1d6b64);
+    border-radius: 12px;
+    padding: 2em 1em;
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+/* Each stat block */
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+}
+
+/* The large number in the stat block */
+.stat-number {
+    font-size: 2.4em;
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+}
+
+/* The label below the number */
+.stat-label {
+    font-size: 0.82em;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 0.3em;
+}
+
+/* Final CTA section at the bottom of the landing page */
+.final-cta-section {
+    text-align: center;
+    padding: 2.5em 1em 3em 1em;
+}
+
+.final-cta-section h2 {
+    margin-bottom: 0.4em;
+}
+
+/* The large button in the final CTA */
+.final-cta-btn {
+    display: inline-block;
+    width: auto;
+    padding: 0.9em 3em;
+    font-size: 1.1em;
+    border-radius: 30px;
+    text-decoration: none;
+}
+
+/* ===== VISUAL IMPROVEMENTS ===== */
+
+/* Slightly softer shadow and hover lift on all cards */
+.card {
+    transition: box-shadow 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+}
+
+/* The footer is the dark bar at the bottom of every page */
+footer {
+    background-color: #333;
+    color: #bebebe; /* Light grey text */
+    text-align: center;
+    padding: 1em;
+    margin-top: 3em;
+    font-size: 0.9em;
+}
+
+/* ===== MOTIVATIONAL MESSAGE BANNER ===== */
+
+/* The large coloured banner shown at the top of the dashboard */
+/* It is outside the card so it stands out as a full-width feature */
+.message-banner {
+    border-radius: 12px;
+    padding: 1.8em 2em;
+    margin-bottom: 1.5em;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18); /* Deeper shadow for prominence */
+}
+
+/* The main message text inside the banner */
+.message-banner p {
+    margin: 0;
+    font-size: 1.3em; /* Larger than normal text */
+    font-weight: bold;
+    line-height: 1.6; /* Comfortable spacing between lines */
+}
+
+/* Level 1 - calming blue to welcome beginners */
+.message-banner-1 { background-color: #3498db; }
+
+/* Level 2 - teal, matches the site's familiar colour */
+.message-banner-2 { background-color: #2e978e; }
+
+/* Level 3 - green, represents growth and progress */
+.message-banner-3 { background-color: #27ae60; }
+
+/* Level 4 - purple, represents ambition and achievement */
+.message-banner-4 { background-color: #8e44ad; }
+
+/* Level 5 - gold gradient for elite status */
+.message-banner-5 { background: linear-gradient(135deg, #f6d365, #fda085); }
+
+/* ===== ATHLETE BADGE ===== */
+
+/* Special gold badge shown when the user reaches difficulty level 5 */
+.athlete-badge {
+    text-align: center;
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    /* Gradient goes from gold to orange */
+    color: white;
+    padding: 0.8em 1em;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 0.8em;
+}
+
+/* Gold colour for the difficulty badge when at level 5 */
+.difficulty-badge-elite {
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    /* Overrides the default teal colour with gold */
+}
+
+/* ===== NUTRITION PANEL ===== */
+
+/* The button that shows or hides the nutrition information */
+.btn-nutrition {
+    display: block;
+    width: 100%;
+    padding: 0.7em;
+    background-color: transparent; /* No background - just a border */
+    color: #2e978e;
+    border: 2px solid #2e978e;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 1em;
+}
+
+/* Nutrition button changes background slightly when hovered */
+.btn-nutrition:hover {
+    background-color: #e8f8f5;
+}
+
+/* The panel that holds the nutrition information - hidden by default */
+.nutrition-panel {
+    display: none; /* JavaScript will change this to "block" when the button is clicked */
+    margin-top: 1.2em;
+    padding-top: 1em;
+    border-top: 1px solid #e0e0e0; /* A line separating it from the meal list */
+}
+
+/* Heading inside the nutrition panel */
+.nutrition-panel h4 {
+    text-align: center;
+    color: #2e978e;
+    margin-bottom: 0.8em;
+    font-size: 1.05em;
+}
+
+/* The grid holds the four nutrition boxes side by side */
+.nutrition-grid {
+    display: flex;
+    justify-content: space-around; /* Spreads the boxes evenly */
+    flex-wrap: wrap; /* Wraps to the next line on small screens */
+    gap: 0.6em;
+}
+
+/* Each individual nutrition box */
+.nutrition-item {
+    display: flex;
+    flex-direction: column; /* Stacks the value above the label */
+    align-items: center;
+    background-color: #f0faf8; /* Very light teal background */
+    border: 1px solid #b8e8e2;
+    border-radius: 8px;
+    padding: 0.8em 1.2em;
+    min-width: 110px; /* Makes sure each box has enough width */
+}
+
+/* The number shown in the nutrition box (e.g. ~130g) */
+.nutrition-value {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2e978e;
+}
+
+/* The label below the number (e.g. Protein) */
+.nutrition-label {
+    font-size: 0.82em;
+    color: #666;
+    margin-top: 0.2em;
+}
+
+/* ===== MEAL OPTION CARDS (on feedback page) ===== */
+
+/* Each card shows one full meal plan option (breakfast, lunch, dinner) */
+.meal-option-card {
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 1em 1.2em;
+    margin-bottom: 1em;
+    background-color: #fafafa;
+}
+
+/* The label at the top of each card (Option A, Option B, Option C) */
+.meal-option-card strong {
+    display: block;
+    color: #2e978e;
+    margin-bottom: 0.6em;
+    font-size: 1em;
+}
+
+/* The list of meals inside the card */
+.meal-option-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0.8em;
+}
+
+/* Each meal row (Breakfast / Lunch / Dinner) */
+.meal-option-card ul li {
+    padding: 0.35em 0;
+    font-size: 0.92em;
+    color: #444;
+    border-bottom: 1px solid #eeeeee;
+}
+
+/* Remove border from the last meal row */
+.meal-option-card ul li:last-child {
+    border-bottom: none;
+}
+
+/* When a meal card is selected, give it a teal border and light background */
+.meal-option-selected {
+    border-color: #2e978e;
+    background-color: #e8f8f5;
+}
+
+/* Stronger selected state specifically for the per-slot meal picker tiles */
+.meal-slot-option.meal-option-selected {
+    border-color: #2e978e;
+    border-width: 2px;
+    background-color: #e8f8f5;
+    box-shadow: 0 2px 10px rgba(46, 151, 142, 0.25);
+    position: relative; /* Needed so the badge can be positioned inside the tile */
+}
+
+/* The "✓ Selected" badge that appears in the top-right corner of the chosen tile */
+.meal-slot-option.meal-option-selected::after {
+    content: "\2713 Selected"; /* \2713 is the ✓ tick character */
+    position: absolute;
+    top: 0.55em;
+    right: 0.75em;
+    font-size: 0.75em;
+    font-weight: bold;
+    color: white;
+    background-color: #2e978e;
+    padding: 0.15em 0.6em;
+    border-radius: 20px; /* Pill shape */
+}
+
+/* ===== STREAK CARD ===== */
+
+/* The row that holds the streak number and label side by side */
+.streak-display {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4em;
+    margin: 0.4em 0 0.6em 0;
+}
+
+/* The large number showing how many days in a row */
+.streak-number {
+    font-size: 3em;
+    font-weight: bold;
+    color: #2e978e;
+    line-height: 1;
+}
+
+/* The small text next to the number */
+.streak-label {
+    font-size: 1em;
+    color: #555;
+}
+
+/* The rest day advisory box - warm yellow to stand out gently */
+.rest-day-notice {
+    background-color: #fff8e1;
+    border: 1px solid #ffd54f;
+    border-radius: 8px;
+    padding: 0.8em 1em;
+    margin-top: 0.8em;
+    font-size: 0.93em;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Bold heading inside the rest day box */
+.rest-day-notice strong {
+    display: block;
+    margin-bottom: 0.3em;
+    color: #333;
+}
+
+/* ===== STREAK STATUS INDICATOR ===== */
+
+.streak-status {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    padding: 0.7em 1em;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+.streak-status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.streak-safe {
+    background: #eafaf1;
+    color: #1e8449;
+    border: 1px solid #a9dfbf;
+}
+.streak-safe .streak-status-dot { background: #27ae60; }
+
+.streak-warning {
+    background: #fff8e1;
+    color: #7d6608;
+    border: 1px solid #f9ca24;
+}
+.streak-warning .streak-status-dot { background: #f6b93b; }
+
+.streak-urgent {
+    background: #fdecea;
+    color: #922b21;
+    border: 1px solid #f1948a;
+}
+.streak-urgent .streak-status-dot {
+    background: #e74c3c;
+    animation: pulse-dot 1s ease infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}
+
+/* ===== ACTIVITY CALENDAR ===== */
+
+.activity-calendar-wrap {
+    margin-top: 0.8em;
+    overflow-x: auto;
+}
+
+.cal-day-headers {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.cal-day-header {
+    text-align: center;
+    font-size: 0.7em;
+    color: #999;
+    font-weight: 600;
+}
+
+.activity-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.cal-day {
+    aspect-ratio: 1;
+    border-radius: 4px;
+    cursor: default;
+    transition: transform 0.1s;
+    position: relative;
+}
+
+.cal-day:hover { transform: scale(1.2); z-index: 1; }
+
+.cal-trained  { background: #27ae60; }
+.cal-missed   { background: #e74c3c; opacity: 0.75; }
+.cal-rest     { background: #85c1e9; }
+.cal-today    { background: #f0f4f4; border: 2px solid #2e978e; }
+.cal-empty    { background: #f0f4f4; opacity: 0.35; }
+
+.cal-legend {
+    display: flex;
+    gap: 1.2em;
+    flex-wrap: wrap;
+    margin-top: 0.8em;
+    font-size: 0.78em;
+    color: #666;
+}
+
+.cal-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+}
+
+.cal-legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+/* ===== REST DAY PLANNER ===== */
+
+.rest-day-planner {
+    margin-top: 1.2em;
+    padding-top: 1.2em;
+    border-top: 1px solid #eee;
+}
+
+.rest-day-planner p {
+    font-size: 0.88em;
+    color: #666;
+    margin-bottom: 0.8em;
+}
+
+.rest-day-options {
+    display: flex;
+    gap: 0.8em;
+    flex-wrap: wrap;
+}
+
+.btn-rest-day {
+    padding: 0.55em 1.1em;
+    border: 2px solid #85c1e9;
+    border-radius: 8px;
+    background: #fff;
+    color: #2980b9;
+    font-size: 0.88em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.btn-rest-day:hover,
+.btn-rest-day.rest-marked {
+    background: #85c1e9;
+    color: #fff;
+}
+
+/* ===== ACTIVITY CALENDAR ===== */
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-top: 0.8em;
+}
+
+.calendar-day-label {
+    text-align: center;
+    font-size: 0.7em;
+    color: #aaa;
+    font-weight: 600;
+    padding-bottom: 2px;
+}
+
+.calendar-cell {
+    aspect-ratio: 1;
+    border-radius: 4px;
+    cursor: default;
+    position: relative;
+}
+
+/* Tooltip on hover */
+.calendar-cell:hover::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    font-size: 0.7em;
+    padding: 3px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.cal-trained  { background: #27ae60; }
+.cal-rest     { background: #85c1e9; }
+.cal-missed   { background: #f1948a; }
+.cal-future   { background: #eee; }
+.cal-inactive { background: #f4f4f4; }
+
+.calendar-legend {
+    display: flex;
+    gap: 1.2em;
+    flex-wrap: wrap;
+    margin-top: 0.8em;
+    font-size: 0.78em;
+    color: #666;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+}
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+/* ===== REST DAY SCHEDULING ===== */
+
+.rest-day-section {
+    margin-top: 1em;
+    text-align: center;
+}
+
+/* Close Menu button inside the meal customiser */
+.btn-close-menu {
+    display: block;
+    margin-top: 0.7em;
+    background: transparent;
+    border: 2px solid #ccc;
+    color: #666;
+    padding: 0.65em 1.4em;
+    border-radius: 8px;
+    font-size: 0.92em;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s, color 0.2s;
+}
+.btn-close-menu:hover {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.btn-rest {
+    background: transparent;
+    border: 2px solid #85c1e9;
+    color: #2471a3;
+    padding: 0.65em 1.4em;
+    border-radius: 8px;
+    font-size: 0.92em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.btn-rest:hover {
+    background: #85c1e9;
+    color: #fff;
+}
+
+.rest-day-today-notice {
+    background: #eaf4fb;
+    border: 1px solid #85c1e9;
+    border-radius: 8px;
+    padding: 1em 1.2em;
+    color: #2471a3;
+    font-size: 0.93em;
+    text-align: center;
+    margin-top: 1em;
+}
+
+/* ===== PROGRESS HISTORY CHART ===== */
+
+/* The container that holds all the bars side by side */
+.history-bars {
+    display: flex;
+    align-items: flex-end; /* Bars grow upward from the bottom */
+    justify-content: center;
+    gap: 0.9em;
+    height: 110px; /* Fixed height so all bars sit on the same baseline */
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0;
+    margin: 1em 0 0.5em 0;
+}
+
+/* Each bar and its label sit inside this wrapper */
+.history-bar-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3em;
+}
+
+/* The coloured bar itself - height is set by JavaScript based on the level */
+.history-bar {
+    width: 32px;
+    background-color: #2e978e;
+    border-radius: 4px 4px 0 0; /* Rounded at the top only */
+    min-height: 4px; /* Always show at least a sliver */
+}
+
+/* The small label below each bar (e.g. "S1", "S2") */
+.history-bar-label {
+    font-size: 0.72em;
+    color: #888;
+}
+
+/* ===== BADGE TILES ===== */
+
+/* The flex container that wraps all badge tiles */
+.badges-grid {
+    display: flex;
+    flex-wrap: wrap; /* Wraps to next line if there are too many to fit */
+    gap: 0.6em;
+    margin-top: 0.6em;
+}
+
+/* Each individual badge tile */
+.badge-tile {
+    padding: 0.5em 1em;
+    border-radius: 20px; /* Pill shape */
+    font-size: 0.85em;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Earned badge - teal filled */
+.badge-earned {
+    background-color: #2e978e;
+    color: white;
+}
+
+/* Locked badge - grey, slightly faded */
+.badge-locked {
+    background-color: #e0e0e0;
+    color: #999;
+    font-weight: normal;
+}
+
+/* ===== PER-SLOT MEAL PICKER ===== */
+
+/* Section heading for each meal slot (Breakfast / Lunch / Dinner) */
+.meal-slot-heading {
+    color: #2e978e;
+    font-size: 1em;
+    margin: 1.2em 0 0.5em 0;
+    padding-bottom: 0.25em;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Each individual clickable option tile within a slot */
+.meal-slot-option {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0.6em 0.9em;
+    margin-bottom: 0.5em;
+    background-color: #fafafa;
+    cursor: pointer; /* Shows a hand cursor so the user knows it is clickable */
+    transition: border-color 0.15s, background-color 0.15s;
+}
+
+.meal-slot-option:hover {
+    border-color: #2e978e;
+    background-color: #f0faf8;
+}
+
+/* The "Option 1 — Default" label at the top of each tile */
+.meal-slot-label {
+    font-size: 0.78em;
+    font-weight: bold;
+    color: #2e978e;
+    margin-bottom: 0.2em;
+}
+
+/* The meal name text */
+.meal-slot-text {
+    font-size: 0.92em;
+    color: #333;
+}
+
+/* The cuisine source tag shown next to the option number e.g. (South Asian) */
+.meal-slot-source {
+    font-weight: normal;
+    color: #888;
+    font-size: 0.9em;
+}
+
+/* ===== NEW BADGE NOTIFICATION (on feedback page) ===== */
+
+/* The green notification box shown when a new badge is earned */
+.badge-notification {
+    background-color: #e8f8f5;
+    border: 2px solid #2e978e;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    margin-top: 1em;
+    text-align: center;
+}
+
+.badge-notification strong {
+    display: block;
+    color: #2e978e;
+    font-size: 1.05em;
+    margin-bottom: 0.3em;
+}
+
+.badge-notification p {
+    color: #333;
+    font-size: 0.95em;
+}
+
+/* The button inside each meal option card */
+.btn-select-meal {
+    display: block;
+    width: 100%;
+    padding: 0.65em;
+    background-color: #2e978e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95em;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 0.4em;
+}
+
+/* Button colour darkens when hovered */
+.btn-select-meal:hover {
+    background-color: #1d6b64;
+}
+
+/* ===== ACCESSIBILITY BUTTON & PANEL ===== */
+
+/* The wrapper div keeps the panel positioned relative to the button */
+.accessibility-wrapper {
+    position: relative;
+}
+
+/* The "Aa" button in the nav bar */
+.accessibility-btn {
+    background-color: rgba(255, 255, 255, 0.18);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 6px;
+    padding: 0.25em 0.7em;
+    font-size: 0.95em;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+
+.accessibility-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* The dropdown panel that opens below the button */
+.accessibility-panel {
+    position: absolute;
+    top: calc(100% + 0.6em);
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    padding: 0.8em;
+    min-width: 190px;
+    z-index: 100; /* Sits on top of everything else */
+}
+
+/* Small heading inside the panel */
+.acc-panel-title {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6em;
+    padding-bottom: 0.4em;
+    border-bottom: 1px solid #eee;
+}
+
+/* Each toggle option row */
+.acc-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.55em 0.8em;
+    margin-bottom: 0.3em;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 0.92em;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+
+.acc-option:hover {
+    border-color: #2e978e;
+    background-color: #f0faf8;
+}
+
+/* Active state - teal filled to show the option is currently ON */
+.acc-option.acc-active {
+    background-color: #2e978e;
+    color: white;
+    border-color: #2e978e;
+}
+
+/* ===== DARK MODE ===== */
+
+body.dark-mode {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+}
+
+body.dark-mode header {
+    background-color: #0f3460;
+}
+
+body.dark-mode .card {
+    background-color: #16213e;
+    color: #e0e0e0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .card h3 {
+    color: #4ecdc4;
+    border-bottom-color: #4ecdc4;
+}
+
+body.dark-mode h2 {
+    color: #4ecdc4;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background-color: #0f3460;
+    border-color: #4ecdc4;
+    color: #e0e0e0;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #888;
+}
+
+body.dark-mode label {
+    color: #c0c0c0;
+}
+
+body.dark-mode footer {
+    background-color: #0d0d1a;
+}
+
+body.dark-mode .nutrition-item {
+    background-color: #0f3460;
+    border-color: #4ecdc4;
+}
+
+body.dark-mode .nutrition-value {
+    color: #4ecdc4;
+}
+
+body.dark-mode .rest-day-notice {
+    background-color: #2a2000;
+    border-color: #ffd54f;
+    color: #e0e0e0;
+}
+
+body.dark-mode .result-message {
+    background-color: #0f3460;
+    border-color: #4ecdc4;
+    color: #4ecdc4;
+}
+
+body.dark-mode .meal-option-card,
+body.dark-mode .meal-slot-option {
+    background-color: #0f3460;
+    border-color: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .meal-slot-option:hover {
+    border-color: #4ecdc4;
+}
+
+body.dark-mode .meal-slot-text {
+    color: #e0e0e0;
+}
+
+body.dark-mode .badge-locked {
+    background-color: #2a2a3e;
+    color: #777;
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(135deg, #1a5c57 0%, #0d3330 100%);
+}
+
+body.dark-mode .hero-card {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+body.dark-mode .accessibility-panel {
+    background-color: #16213e;
+    border-color: #4ecdc4;
+}
+
+body.dark-mode .acc-panel-title {
+    color: #888;
+    border-bottom-color: #333;
+}
+
+body.dark-mode .acc-option {
+    background-color: #0f3460;
+    border-color: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .acc-option.acc-active {
+    background-color: #2e978e;
+    color: white;
+}
+
+body.dark-mode .field-error {
+    color: #ff6b6b;
+}
+
+body.dark-mode .streak-label {
+    color: #aaa;
+}
+
+body.dark-mode .history-bar-label {
+    color: #aaa;
+}
+
+/* ===== LARGER TEXT ===== */
+
+/* All em-based sizes scale up automatically since they are relative to this base */
+body.large-text {
+    font-size: 1.18em;
+}
+
+/* ===== HIGH CONTRAST ===== */
+
+/* Black background across the whole page */
+body.high-contrast {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Force ALL text elements to white so individually coloured elements
+   (e.g. colour:#555 on paragraphs) don't show dark against black */
+body.high-contrast p,
+body.high-contrast span,
+body.high-contrast li,
+body.high-contrast label,
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast h4,
+body.high-contrast h5,
+body.high-contrast h6,
+body.high-contrast strong,
+body.high-contrast small,
+body.high-contrast td,
+body.high-contrast th,
+body.high-contrast legend,
+body.high-contrast figcaption,
+body.high-contrast .section-sub,
+body.high-contrast .hero-headline,
+body.high-contrast .hero-sub,
+body.high-contrast .stat-number,
+body.high-contrast .stat-label,
+body.high-contrast .feature-icon-circle,
+body.high-contrast .step-number,
+body.high-contrast .nutrition-value,
+body.high-contrast .streak-number,
+body.high-contrast .field-error,
+body.high-contrast .tip-label,
+body.high-contrast .session-strip-value,
+body.high-contrast .session-strip-label {
+    color: #fff !important; /* !important overrides inline colour styles e.g. style="color:#555" */
+}
+
+/* Section and card backgrounds */
+body.high-contrast header,
+body.high-contrast footer,
+body.high-contrast .landing-section,
+body.high-contrast .landing-section-alt,
+body.high-contrast .stats-section,
+body.high-contrast .final-cta-section,
+body.high-contrast .hero {
+    background-color: #000;
+    background-image: none; /* Remove any gradient backgrounds */
+}
+
+body.high-contrast header {
+    border-bottom: 3px solid #fff;
+}
+
+body.high-contrast footer {
+    border-top: 2px solid #fff;
+}
+
+body.high-contrast .card,
+body.high-contrast .feature-card,
+body.high-contrast .step-card,
+body.high-contrast .tip-card {
+    background-color: #000;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+body.high-contrast .card h3 {
+    border-bottom-color: #fff;
+}
+
+/* Form elements — !important overrides inline background styles (e.g. textarea has background:#fafafa inline) */
+body.high-contrast input,
+body.high-contrast select,
+body.high-contrast textarea {
+    background-color: #000 !important;
+    border: 2px solid #fff !important;
+    color: #fff !important;
+}
+
+/* Buttons — white background with black text so they stand out */
+body.high-contrast .btn,
+body.high-contrast .btn-easy,
+body.high-contrast .btn-manageable,
+body.high-contrast .btn-hard,
+body.high-contrast .btn-rest {
+    background-color: #fff !important;
+    color: #000 !important;
+    border: 2px solid #fff;
+}
+
+body.high-contrast .btn:hover,
+body.high-contrast .btn-rest:hover {
+    background-color: #ddd !important;
+    color: #000 !important;
+}
+
+/* Link buttons (e.g. "Get Started for Free", "Build My Plan Now") need black text,
+   not the yellow used for plain text links */
+body.high-contrast a.btn,
+body.high-contrast a.hero-cta,
+body.high-contrast a.final-cta-btn {
+    background-color: #fff !important;
+    color: #000 !important;
+    border: 2px solid #fff;
+}
+
+/* Plain text links (not buttons) get yellow for visibility */
+body.high-contrast a:not(.btn):not(.hero-cta):not(.final-cta-btn):not(.header-title-link) {
+    color: #ffff00;
+}
+
+/* Nav and header links stay white — !important beats the :not() specificity above */
+body.high-contrast .header-title-link,
+body.high-contrast nav ul li a {
+    color: #fff !important;
+}
+
+/* Nutrition, badges, meal options */
+body.high-contrast .nutrition-item {
+    background-color: #000;
+    border: 2px solid #fff;
+}
+
+/* !important needed because the broad span/strong rule above uses !important on color:#fff */
+body.high-contrast .difficulty-badge,
+body.high-contrast .badge-earned {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+body.high-contrast .history-bar {
+    background-color: #fff !important;
+}
+
+/* Meal tile — !important needed because .fafafa background and teal/dark span
+   colours would otherwise show as light text on a light background */
+body.high-contrast .meal-slot-option {
+    background-color: #000 !important;
+    border: 2px solid #fff !important;
+    color: #fff !important;
+}
+
+/* All text spans inside each tile */
+body.high-contrast .meal-slot-label,
+body.high-contrast .meal-slot-text,
+body.high-contrast .meal-slot-source,
+body.high-contrast .meal-slot-heading {
+    color: #fff !important;
+}
+
+/* Selected tile — darker grey bg + thicker border so it stands out from unselected */
+body.high-contrast .meal-slot-option.meal-option-selected {
+    background-color: #222 !important;
+    border: 3px solid #fff !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 2px #fff;
+}
+
+/* The "✓ Selected" badge inside selected tile — invert to black-on-white */
+body.high-contrast .meal-slot-option.meal-option-selected::after {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Meal option cards (full-plan view) */
+body.high-contrast .meal-option-card {
+    background-color: #000 !important;
+    border: 2px solid #fff;
+    color: #fff !important;
+}
+body.high-contrast .meal-option-card strong {
+    color: #fff !important;
+}
+body.high-contrast .meal-option-card ul li {
+    color: #fff !important;
+    border-bottom-color: #444;
+}
+
+/* Calendar cells */
+body.high-contrast .cal-trained  { background-color: #fff; }
+body.high-contrast .cal-missed   { background-color: #888; }
+body.high-contrast .cal-rest     { background-color: #555; border: 2px solid #fff; }
+body.high-contrast .cal-future,
+body.high-contrast .cal-inactive { background-color: #222; border: 1px solid #555; }
+
+/* Result/success message boxes */
+body.high-contrast .result-message {
+    background-color: #000;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+/* Water & BMI tiles */
+body.high-contrast .nutrition-extra-item {
+    background: #000 !important;
+    border: 2px solid #fff;
+}
+body.high-contrast .nutrition-extra-value,
+body.high-contrast .nutrition-extra-label {
+    color: #fff !important;
+}
+/* BMI category colours — force white so coloured text isn't lost on black */
+body.high-contrast .bmi-healthy,
+body.high-contrast .bmi-underweight,
+body.high-contrast .bmi-overweight,
+body.high-contrast .bmi-obese {
+    color: #fff !important;
+}
+
+/* Personal records tiles */
+body.high-contrast .record-item {
+    background: #000 !important;
+    border: 2px solid #fff;
+}
+body.high-contrast .record-value,
+body.high-contrast .record-label {
+    color: #fff !important;
+}
+
+/* Session context strip (feedback page) */
+body.high-contrast .session-strip-item {
+    background: #000 !important;
+    border: 2px solid #fff;
+}
+
+/* Fitness tip card */
+body.high-contrast .tip-card {
+    background: #000 !important;
+    border-left: 4px solid #fff;
+    color: #fff !important;
+}
+body.high-contrast .tip-label {
+    color: #fff !important;
+}
+
+/* Locked badges — visible grey on black */
+body.high-contrast .badge-locked {
+    background-color: #222 !important;
+    color: #bbb !important;
+    border: 1px solid #666;
+}
+
+/* Rest day notice banner */
+body.high-contrast .rest-day-today-notice {
+    background: #000 !important;
+    border: 2px solid #fff;
+    color: #fff !important;
+}
+
+/* ===== ACCESSIBILITY PANEL — HIGH CONTRAST ===== */
+
+/* "Aa" trigger button in the nav */
+body.high-contrast .accessibility-btn {
+    background-color: transparent !important;
+    border: 2px solid #fff !important;
+    color: #fff !important;
+}
+body.high-contrast .accessibility-btn:hover {
+    background-color: #333 !important;
+}
+
+/* The dropdown panel */
+body.high-contrast .accessibility-panel {
+    background-color: #000 !important;
+    border: 2px solid #fff !important;
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+}
+
+/* "Accessibility" heading inside the panel */
+body.high-contrast .acc-panel-title {
+    color: #fff !important;
+    border-bottom-color: #555 !important;
+}
+
+/* Each toggle button row */
+body.high-contrast .acc-option {
+    background-color: #000 !important;
+    border: 1px solid #fff !important;
+    color: #fff !important;
+}
+body.high-contrast .acc-option:hover {
+    background-color: #333 !important;
+    border-color: #fff !important;
+}
+
+/* Active / ON state — white filled so it clearly stands out */
+body.high-contrast .acc-option.acc-active {
+    background-color: #fff !important;
+    color: #000 !important;
+    border-color: #fff !important;
+}
+
+/* Badge unlocked notification box */
+body.high-contrast .badge-notification {
+    background-color: #000 !important;
+    border: 2px solid #fff !important;
+    color: #fff !important;
+}
+body.high-contrast .badge-notification strong,
+body.high-contrast .badge-notification p,
+body.high-contrast .badge-notification span {
+    color: #fff !important;
+}
+
+/* Close Menu button */
+body.high-contrast .btn-close-menu {
+    background: transparent !important;
+    border: 2px solid #fff !important;
+    color: #fff !important;
+}
+body.high-contrast .btn-close-menu:hover {
+    background: #333 !important;
+    color: #fff !important;
+}
+
+/* Rest day button — was blue-on-transparent, now white outline */
+body.high-contrast .btn-rest {
+    background: transparent !important;
+    border: 2px solid #fff !important;
+    color: #fff !important;
+}
+body.high-contrast .btn-rest:hover {
+    background: #333 !important;
+    color: #fff !important;
+}
+
+/* Calendar and activity legend labels */
+body.high-contrast .legend-item,
+body.high-contrast .cal-legend-item {
+    color: #fff !important;
+}
+
+/* Feedback button sub-labels — black text (same as parent button) and full opacity */
+body.high-contrast .btn-sub {
+    color: #000 !important;
+    opacity: 1;
+}
+
+/* Recovery Reminder notice (yellow box shown after streak of 3+ days) */
+body.high-contrast .rest-day-notice {
+    background: #000 !important;
+    border: 2px solid #fff;
+    color: #fff !important;
+}
+body.high-contrast .rest-day-notice strong {
+    color: #fff !important;
+}
+
+/* Streak status pills — use vivid colours that pop against black */
+body.high-contrast .streak-safe {
+    background: #000;
+    color: #4cff80 !important;  /* bright green */
+    border: 2px solid #4cff80;
+}
+body.high-contrast .streak-safe .streak-status-dot { background: #4cff80; }
+
+body.high-contrast .streak-warning {
+    background: #000;
+    color: #ffc107 !important;  /* bright amber */
+    border: 2px solid #ffc107;
+}
+body.high-contrast .streak-warning .streak-status-dot { background: #ffc107; }
+
+body.high-contrast .streak-urgent {
+    background: #000;
+    color: #ff4444 !important;  /* bright red */
+    border: 2px solid #ff4444;
+}
+body.high-contrast .streak-urgent .streak-status-dot { background: #ff4444; }
+
+/* ===== PAGE LOAD FADE-IN ===== */
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    animation: fadeInUp 0.4s ease both;
+}
+
+.welcome, .message-banner {
+    animation: fadeInUp 0.3s ease both;
+}
+
+.hero-text {
+    animation: fadeInUp 0.5s ease both;
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .card, .welcome, .message-banner, .hero-text { animation: none; }
+}
+
+/* ===== BADGE CELEBRATION ===== */
+
+@keyframes badgePulse {
+    0%   { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.55); }
+    50%  { box-shadow: 0 0 0 14px rgba(39, 174, 96, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0); }
+}
+
+.badge-notification.badge-celebrate {
+    animation: badgePulse 0.75s ease forwards;
+}
+
+/* ===== WEEKLY SUMMARY CARD ===== */
+
+.weekly-summary {
+    background: linear-gradient(135deg, #2e978e 0%, #27ae60 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 1.4em 1.6em;
+    margin-top: 1.2em;
+    text-align: center;
+}
+
+.weekly-summary-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 0.3em;
+}
+
+.weekly-summary-sub {
+    font-size: 0.9em;
+    opacity: 0.88;
+    margin-bottom: 1em;
+}
+
+.weekly-summary-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2.5em;
+    flex-wrap: wrap;
+}
+
+.weekly-stat-number {
+    font-size: 1.9em;
+    font-weight: bold;
+    display: block;
+}
+
+.weekly-stat-label {
+    font-size: 0.82em;
+    opacity: 0.88;
+}
+
+/* ===== PERSONAL RECORDS CARD ===== */
+
+.records-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8em;
+    margin-top: 0.6em;
+}
+
+.record-item {
+    background: #f0f4f4;
+    border-radius: 8px;
+    padding: 0.85em 0.5em;
+    text-align: center;
+}
+
+.record-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2e978e;
+    display: block;
+}
+
+.record-label {
+    font-size: 0.78em;
+    color: #666;
+    margin-top: 0.2em;
+    display: block;
+}
+
+/* ===== WATER & BMI IN NUTRITION PANEL ===== */
+
+.nutrition-extra {
+    display: flex;
+    gap: 1em;
+    margin-top: 0.9em;
+    flex-wrap: wrap;
+}
+
+.nutrition-extra-item {
+    flex: 1;
+    min-width: 120px;
+    background: #f0f4f4;
+    border-radius: 8px;
+    padding: 0.7em 1em;
+    text-align: center;
+}
+
+.nutrition-extra-value {
+    font-size: 1.15em;
+    font-weight: bold;
+    color: #2e978e;
+    display: block;
+}
+
+.nutrition-extra-label {
+    font-size: 0.78em;
+    color: #666;
+    margin-top: 0.15em;
+    display: block;
+}
+
+/* BMI category colour coding */
+.bmi-healthy    { color: #27ae60; }
+.bmi-underweight { color: #3498db; }
+.bmi-overweight { color: #e67e22; }
+.bmi-obese      { color: #e74c3c; }
+
+/* ===== RESET PROFILE SECTION ===== */
+
+.reset-section {
+    margin-top: 2em;
+    padding-top: 1.2em;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+.btn-reset {
+    background: transparent;
+    color: #c0392b;
+    border: 1.5px solid #c0392b;
+    padding: 0.6em 1.4em;
+    border-radius: 6px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-reset:hover {
+    background: #c0392b;
+    color: #fff;
+}
+
+.reset-confirm-card {
+    border-left: 4px solid #c0392b;
+}
+
+/* ===== TOMORROW'S PLAN PREVIEW ===== */
+
+.tomorrow-preview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5em;
+    margin-top: 0.5em;
+}
+
+.tomorrow-preview-heading {
+    color: #2e978e;
+    font-size: 1em;
+    margin-bottom: 0.6em;
+    padding-bottom: 0.3em;
+    border-bottom: 2px solid #e0f0ee;
+}
+
+.tomorrow-preview-grid ul {
+    list-style: disc;
+    padding-left: 1.2em;
+    color: #444;
+    font-size: 0.93em;
+    line-height: 1.7;
+}
+
+/* ===== MOBILE RESPONSIVE STYLES ===== */
+/* These rules apply when the screen is 640px wide or narrower (phones in portrait) */
+
+@media (max-width: 640px) {
+
+    /* Stack the header title and nav vertically on small screens */
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1em;
+        gap: 0.75em;
+    }
+
+    /* Wrap and centre the nav links on small screens */
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8em;
+    }
+
+    /* Reduce the hero headline size so it fits on a phone */
+    .hero-headline {
+        font-size: 1.45em;
+    }
+
+    .hero-sub {
+        font-size: 0.95em;
+    }
+
+    /* Stack the three feature cards vertically on small screens */
+    .hero-features {
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        margin-top: 2em;
+    }
+
+    /* Allow feature cards to fill the full width on mobile */
+    .hero-card {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* Reduce side padding in the main content area */
+    main {
+        padding: 0 0.5em;
+    }
+
+    /* Make h2 headings slightly smaller on mobile */
+    h2 {
+        font-size: 1.4em;
+    }
+
+    /* Make the nutrition grid show two boxes per row instead of four */
+    .nutrition-grid {
+        justify-content: space-between;
+    }
+
+    .nutrition-item {
+        min-width: calc(50% - 0.4em); /* Two items per row with a small gap */
+    }
+
+    /* Shrink the progress bars slightly so they fit on narrow screens */
+    .history-bar {
+        width: 22px;
+    }
+
+    .history-bars {
+        gap: 0.5em;
+    }
+
+    /* Make the streak number a little smaller on mobile */
+    .streak-number {
+        font-size: 2.2em;
+    }
+
+    /* Allow badge tiles to wrap more freely */
+    .badges-grid {
+        gap: 0.4em;
+    }
+
+    /* Make feedback buttons full height so they are easy to tap */
+    .btn, .btn-easy, .btn-manageable, .btn-hard {
+        font-size: 1em;
+        padding: 1em;
+    }
+
+    /* Stack meal slot options to fill full width */
+    .meal-slot-option {
+        width: 100%;
+    }
+
+    /* Stack landing page feature and step cards vertically on mobile */
+    .features-grid,
+    .steps-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-card,
+    .step-card {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* Hide the arrow connectors between steps on mobile */
+    .step-connector {
+        display: none;
+    }
+
+    /* Make stats wrap into a 2x2 grid on mobile */
+    .stat-item {
+        min-width: calc(50% - 1em);
+    }
+
+    .final-cta-btn {
+        width: 100%;
+        padding: 0.9em 1em;
+    }
+
+    .tomorrow-preview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .records-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .weekly-summary-stats {
+        gap: 1.5em;
+    }
+
+}

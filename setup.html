@@ -1,0 +1,243 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <title>FitAI - Set Up Your Plan</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+
+        <header>
+            <h1><a href="index.html" class="header-title-link"><img src="fitai_logo_white.svg" alt="FitAI" class="header-logo"></a></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="setup.html">My Plan</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li>
+                        <div class="accessibility-wrapper">
+                            <button class="accessibility-btn" onclick="toggleAccessibilityPanel()" title="Accessibility Options">Aa</button>
+                            <div class="accessibility-panel" id="accessibilityPanel" style="display:none;">
+                                <p class="acc-panel-title">Accessibility</p>
+                                <button id="acc_darkBtn"     class="acc-option" onclick="toggleDarkMode()">Dark Mode</button>
+                                <button id="acc_largeBtn"    class="acc-option" onclick="toggleLargeText()">Larger Text</button>
+                                <button id="acc_contrastBtn" class="acc-option" onclick="toggleHighContrast()">High Contrast</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+
+            <h2>Tell Us About Yourself</h2>
+
+            <div class="card">
+
+                <p style="margin-bottom: 1em; color: #555;">
+                    Fill in the form below so the AI can create a personalised fitness and nutrition plan just for you.
+                </p>
+
+                <form id="profileForm">
+
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="e.g. John Smith" required>
+                    <p class="field-error" id="nameError" style="display:none;">
+                        Oops! Please enter a valid name using letters only.
+                    </p>
+
+                    <label for="age">Your Age</label>
+                    <input type="number" id="age" placeholder="e.g. 18 - 100" min="18" max="100" required>
+                    <p class="field-error" id="ageError" style="display:none;">
+                        Oops! Please enter an age between 18 and 100.
+                    </p>
+
+                    <label for="weight">Your Weight (kg)</label>
+                    <input type="number" id="weight" placeholder="e.g. 70" min="30" max="300" required>
+                    <p style="font-size:0.82em; color:#888; margin-top:-0.8em; margin-bottom:1.2em;">
+                        Used to calculate your personalised daily nutrition targets.
+                    </p>
+                    <p class="field-error" id="weightError" style="display:none;">
+                        Oops! Please enter a valid weight between 30 and 300 kg.
+                    </p>
+
+                    <label for="height">Your Height (cm) <span style="font-weight:normal; color:#888;">(optional)</span></label>
+                    <input type="number" id="height" placeholder="e.g. 175" min="100" max="250">
+                    <p style="font-size:0.82em; color:#888; margin-top:-0.8em; margin-bottom:1.2em;">
+                        Used to calculate your BMI alongside your nutrition targets.
+                    </p>
+                    <p class="field-error" id="heightError" style="display:none;">
+                        Oops! Please enter a valid height between 100 and 250 cm.
+                    </p>
+
+                    <label for="gender">Gender</label>
+                    <select id="gender" required>
+                        <option value="">-- Please select --</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="prefer_not">Prefer not to say</option>
+                    </select>
+                    <p class="field-error" id="genderError" style="display:none;">
+                        Please select a gender option to continue.
+                    </p>
+
+                    <label for="goal">What is your fitness goal?</label>
+                    <select id="goal" required>
+                        <option value="">-- Please select --</option>
+                        <option value="lose_weight">Lose Weight</option>
+                        <option value="build_muscle">Build Muscle</option>
+                        <option value="improve_fitness">Improve General Fitness</option>
+                        <option value="maintain">Maintain Current Fitness</option>
+                    </select>
+                    <p class="field-error" id="goalError" style="display:none;">
+                        Please select a fitness goal to continue.
+                    </p>
+
+                    <label for="activityLevel">What is your current activity level?</label>
+                    <select id="activityLevel" required>
+                        <option value="">-- Please select --</option>
+                        <option value="beginner">Beginner (little or no exercise)</option>
+                        <option value="intermediate">Intermediate (exercise 2-3 times a week)</option>
+                        <option value="advanced">Advanced (exercise 4+ times a week)</option>
+                    </select>
+                    <p class="field-error" id="activityError" style="display:none;">
+                        Please select your current activity level to continue.
+                    </p>
+
+                    <label for="diet">Dietary Preference</label>
+                    <select id="diet" required>
+                        <option value="">-- Please select --</option>
+                        <option value="no_preference">No Preference</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="halal">Halal</option>
+                        <option value="gluten_free">Gluten Free</option>
+                    </select>
+                    <p class="field-error" id="dietError" style="display:none;">
+                        Please select a dietary preference to continue.
+                    </p>
+
+                    <label for="cuisine">Cuisine Preference</label>
+                    <select id="cuisine" required>
+                        <option value="">-- Please select --</option>
+                        <option value="no_preference">No Preference (Mixed / Western)</option>
+                        <option value="south_asian">South Asian (Indian, Pakistani, Bangladeshi)</option>
+                        <option value="middle_eastern">Middle Eastern / North African</option>
+                        <option value="east_asian">East Asian (Chinese, Japanese, Korean)</option>
+                        <option value="west_african">West African / Caribbean</option>
+                        <option value="mediterranean">Mediterranean (Greek, Italian, Spanish)</option>
+                    </select>
+                    <p class="field-error" id="cuisineError" style="display:none;">
+                        Please select a cuisine preference to continue.
+                    </p>
+
+                    <button type="submit" class="btn">Generate My Plan</button>
+
+                </form>
+
+            </div>
+
+        </main>
+
+        <footer>
+            <p>FitAI - Personalised Fitness and Nutrition System | CN6000 Project 2025 - 26</p>
+        </footer>
+
+        <script src="app.js"></script>
+
+        <script>
+            // Pre-fill the form if the user already has a saved profile
+            var existing = loadProfile();
+            if (existing !== null) {
+                document.getElementById("name").value          = existing.name;
+                document.getElementById("age").value           = existing.age;
+                document.getElementById("weight").value        = existing.weight || "";
+                document.getElementById("height").value        = existing.height || "";
+                document.getElementById("gender").value        = existing.gender;
+                document.getElementById("goal").value          = existing.goal;
+                document.getElementById("activityLevel").value = existing.activityLevel;
+                document.getElementById("diet").value          = existing.diet;
+                document.getElementById("cuisine").value       = existing.cuisine;
+            }
+
+            var nameInput = document.getElementById("name");
+
+            // Strip non-letter characters as the user types in the name field
+            nameInput.addEventListener("input", function() {
+                nameInput.value = nameInput.value.replace(/[^a-zA-Z\s-]/g, "");
+            });
+
+            // Prevent "e", "E", "+" and "-" in number fields.
+            // Browsers allow these by default because of scientific notation (e.g. 1e5),
+            // but they make no sense for age or weight.
+            var numberInputs = [
+                document.getElementById("age"),
+                document.getElementById("weight"),
+                document.getElementById("height")
+            ];
+            numberInputs.forEach(function(input) {
+                input.addEventListener("keydown", function(e) {
+                    if (e.key === "e" || e.key === "E" || e.key === "+" || e.key === "-") {
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            function showError(errorId) {
+                document.getElementById(errorId).style.display = "block";
+                document.getElementById(errorId).scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+
+            function hideError(errorId) {
+                document.getElementById(errorId).style.display = "none";
+            }
+
+            document.getElementById("profileForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                var name          = document.getElementById("name").value.trim();
+                var age           = document.getElementById("age").value;
+                var weight        = document.getElementById("weight").value;
+                var height        = document.getElementById("height").value;
+                var gender        = document.getElementById("gender").value;
+                var goal          = document.getElementById("goal").value;
+                var activityLevel = document.getElementById("activityLevel").value;
+                var diet          = document.getElementById("diet").value;
+                var cuisine       = document.getElementById("cuisine").value;
+
+                // Hide all errors before re-validating
+                hideError("nameError");
+                hideError("ageError");
+                hideError("weightError");
+                hideError("heightError");
+                hideError("genderError");
+                hideError("goalError");
+                hideError("activityError");
+                hideError("dietError");
+                hideError("cuisineError");
+
+                if (name === "" || !/^[a-zA-Z\s-]+$/.test(name)) { showError("nameError");    return; }
+                if (age === "" || parseInt(age) < 18 || parseInt(age) > 100) { showError("ageError"); return; }
+                if (weight === "" || parseFloat(weight) < 30 || parseFloat(weight) > 300) { showError("weightError"); return; }
+                if (height !== "" && (parseFloat(height) < 100 || parseFloat(height) > 250)) { showError("heightError"); return; }
+                if (gender === "")        { showError("genderError");   return; }
+                if (goal === "")          { showError("goalError");     return; }
+                if (activityLevel === "") { showError("activityError"); return; }
+                if (diet === "")          { showError("dietError");     return; }
+                if (cuisine === "")       { showError("cuisineError");  return; }
+
+                // Save the profile and starting difficulty to localStorage
+                saveProfile({ name: name, age: age, weight: weight, height: height, gender: gender, goal: goal, activityLevel: activityLevel, diet: diet, cuisine: cuisine });
+                saveDifficulty(getStartingDifficulty(activityLevel));
+
+                // Send the user to their personalised dashboard
+                window.location.href = "dashboard.html";
+            });
+        </script>
+
+    </body>
+    </html>

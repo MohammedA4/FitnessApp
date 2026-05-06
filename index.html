@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>FitAI - Personalised Fitness</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1><a href="index.html" class="header-title-link"><img src="fitai_logo_white.svg" alt="FitAI" class="header-logo"></a></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="setup.html">My Plan</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <div class="accessibility-wrapper">
+                        <button class="accessibility-btn" onclick="toggleAccessibilityPanel()" title="Accessibility Options">Aa</button>
+                        <div class="accessibility-panel" id="accessibilityPanel" style="display:none;">
+                            <p class="acc-panel-title">Accessibility</p>
+                            <button id="acc_darkBtn"     class="acc-option" onclick="toggleDarkMode()">Dark Mode</button>
+                            <button id="acc_largeBtn"    class="acc-option" onclick="toggleLargeText()">Larger Text</button>
+                            <button id="acc_contrastBtn" class="acc-option" onclick="toggleHighContrast()">High Contrast</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Hero - full width teal gradient-->
+    <section class="hero">
+        <div class="hero-text">
+            <img src="fitai_logo_white.svg" alt="FitAI" class="hero-logo">
+            <h2 class="hero-headline">Your Personalised Fitness Journey Starts Here</h2>
+            <p class="hero-sub">
+                FitAI builds a workout and meal plan around your goals, dietary needs, and
+                cultural preferences. It then adapts every day based on how you feel.
+            </p>
+            <a href="setup.html" class="hero-cta">Get Started for Free</a>
+        </div>
+    </section>
+
+    <main>
+
+        <!--Features section-->
+        <section class="landing-section">
+            <h2 class="section-heading">Everything You Need to Reach Your Goals</h2>
+            <p class="section-sub">One platform, fully personalised to you.</p>
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon-circle">W</div>
+                    <h3>Smart Workouts</h3>
+                    <p>
+                        Exercise plans matched to your specific goal and fitness level.
+                        As you improve, the AI increases the challenge automatically.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-circle">M</div>
+                    <h3>Tailored Meals</h3>
+                    <p>
+                        Meal suggestions built around your dietary preferences and cultural
+                        cuisine, from South Asian to Mediterranean and beyond.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-circle">A</div>
+                    <h3>AI Adaptation</h3>
+                    <p>
+                        After every workout, tell the AI how it felt. It learns from your
+                        feedback and adjusts your difficulty level in real time.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!--How it works section-->
+        <section class="landing-section landing-section-alt">
+            <h2 class="section-heading">How It Works</h2>
+            <p class="section-sub">Up and running in under a minute.</p>
+
+            <div class="steps-grid">
+
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Tell Us About You</h3>
+                    <p>Fill in a quick profile with your fitness goal, activity level, and food preferences.</p>
+                </div>
+
+                <div class="step-connector"></div>
+                <!--Arrow between steps - hidden on mobile-->
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Get Your Plan</h3>
+                    <p>The AI instantly generates a personalised workout and culturally relevant meal plan.</p>
+                </div>
+
+                <div class="step-connector"></div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Improve Every Day</h3>
+                    <p>Rate your workout after each session and the AI adapts your plan for tomorrow.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!--Stats row-->
+        <section class="stats-section">
+            <div class="stat-item">
+                <span class="stat-number">5</span>
+                <span class="stat-label">Difficulty Levels</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">6+</span>
+                <span class="stat-label">Cuisine Styles</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">4</span>
+                <span class="stat-label">Fitness Goals</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">12</span>
+                <span class="stat-label">Badges to Earn</span>
+            </div>
+        </section>
+
+        <!--Final call to action-->
+        <section class="final-cta-section">
+            <h2>Ready to Start Your Fitness Journey?</h2>
+            <p style="color:#555; margin-bottom:1.5em;">
+                It takes less than a minute to set up your personalised plan.
+            </p>
+            <a href="setup.html" class="btn final-cta-btn">Build My Plan Now</a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>FitAI - Personalised Fitness and Nutrition System | CN6000 Project 2025 - 26</p>
+    </footer>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

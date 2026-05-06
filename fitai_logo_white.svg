@@ -1,0 +1,23 @@
+<svg width="100%" viewBox="20 55 600 175" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>FitAI Logo</title>
+
+  <!-- Icon circle background -->
+  <circle cx="100" cy="130" r="68" fill="rgba(255,255,255,0.15)"/>
+
+  <!-- White ring around circle -->
+  <circle cx="100" cy="130" r="72" fill="none" stroke="white" stroke-width="4"/>
+
+  <!-- Heartbeat / pulse line inside circle -->
+  <polyline points="42,130 62,130 72,105 82,155 92,115 102,145 112,125 122,135 132,130 158,130"
+            fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- FitAI text -->
+  <text x="188" y="170" fill="white" font-family="Arial, sans-serif" font-size="88" font-weight="700">FitAI</text>
+
+  <!-- Tagline -->
+  <text x="188" y="208" fill="rgba(255,255,255,0.8)" font-family="Arial, sans-serif" font-size="18">PERSONALISED FITNESS &amp; NUTRITION</text>
+
+  <!-- Decorative underline -->
+  <rect x="188" y="218" width="400" height="3" rx="2" fill="rgba(255,255,255,0.5)"/>
+
+</svg>
